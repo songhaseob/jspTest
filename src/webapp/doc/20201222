@@ -1,0 +1,63 @@
+개발환경 구축하기
+
+spring.io 접속 -> projects -> 4.9.0 windows 64bit 다운 
+-> contents압축 풀기
+
+maven project만들기
+maven project -> next -> create a simple check -> 
+
+Group id : 해당 프로젝트를 진행하는 회사에 대한 정보
+	 일반적으로 회사의 도메인 역순으로 기술
+                   ex) naver.com ==> com.naver
+Artifact id : Group id 에 해당하는 회사에서 진행하는 프로젝트 이름
+                     ex) google : GMAIL, GOOGLE DRIVE
+
+version : 프로젝트의 버전
+                대.중.소  3.5.2
+
+* war로 선택을 해서 만든다
+
+jar : Java Archive : 클래스들을 묶어 놓은 파일, 압축파일
+
+class, html, jsp, image,css,javascript
+war : Web Archive : 웹 프로그램을 묶어 놓은 파일
+          tomcat의 webapps 폴더에 war 파일을 복사 해놓고 톰캣을 기동하면 
+          war 파일을 톰캣이 자동으로 압축을 해제하고 웹 어플리케이션이 서비스 되도록 한다
+
+project -> properties -> project facets dynamic web module 3.0  변경 자바 -> 1.8 변경
+
+
+웹 아키텍쳐 
+
+jsp/servlet,spring,spring boot
+
+배치(일괄처리)
+
+----------------------------------------------------------
+-Servlet
+Server program + let(작다를 뜻하는 접미어) : 작은 서버 프로그램
+
+JAVA를 사용하여 동적 웹페이지를 생성하는 표준 스펙
+HttpServlet 클래스를 상속하여 작성
+
+Web application Server == Web Container == Servlet Container
+
+pom : Project Object Model - 프로젝트에 대한 설정 정보
+	해당 프로젝트의 만든 회사
+	프로젝트 이름
+	프로젝트의 버전
+	프로젝트에서 필요로 하는 의존성(dependency) - 라이브러리(ojdbc6.jar)
+pom.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
