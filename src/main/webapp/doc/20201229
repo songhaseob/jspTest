@@ -6,3 +6,43 @@ mvnrepository.com 접속후 junit검색후 라이브러리 추가 - 테스트코
 
 maven package 시 test 코드 실행 skip
 mvn package -Dmaven.test.skip=true
+
+클래스는 만들어져 있을수도 있고?? 근데 jsp는 요청하면 생김
+jsp파일이 생기는거는 최초요청이 일어났을 때 폴더안에 파일이 생긴다.
+(콘솔창에서 dep 검색해서 들어간 폴더)
+
+1. jsp는 servlet으로 변환된어 서비스 된다.
+2. servlet-container(tomcat)이 jsp를 서블릿으로 변환하는 과정에서 사용하는 폴더는 work폴더
+	- tomcat도 개발자가 만든 프로그램으로 비정상적으로 동작할 때가 있음
+	- 개발자가 jsp파일을 수정하였음에도 수정 내역이 반영되지 않을 경우, work 폴더에 생성된 jsp 변환 
+	  파일들(java, class)을 삭제해주면 새롭게 만들어준다.
+3. jsp를 서블릿으로 변환하는 시기는 해당 jsp에 대해 최초 요청이 일어났을 경우에 변환
+	- 서블릿으로 생성이 된 이후 같은 파일에 대한 요청은 이미 변환된 파일로 서비스
+	서비스가 doget이랑 비슷하다고 봐도 무방
+jsp는 get이나 post, head만 된다
+
+테스트 라이브러리에 대해 배움
+
+구체화	<---------------->	추상화/일반화
+tomcat				Servlet Container	
+resin
+(예:버스,트럭)			(자동차)
+
+요청을 서버가 받고 어떤서비스로 매핑되어있는지 확인하고 그 url이 서비스를 호출한다?
+서버가 요청을 받고 리케스트랑 리스폰스 객체를 만듬
+리퀘스트는 interface임
+
+junit 개념
+junit이란 자바용 단위 테스트 도구이다
+@Before 해당 테스트 클래스의 객체를 초기화하는 작업
+@After 해당 테스트 실행 수 실행
+
+@BeforeClass 테스트 클래스 실행 전 한번 실행
+@AfterClass 테스트 클래스 실행 후 한번 실행
+
+
+재귀함수 - factorial
+
+request.getMethod() : <%=request.getMethod() %>
+request.getServerPort() : <%=request.getServerPort() %>
+이둘은 알아둬야함
