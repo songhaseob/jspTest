@@ -24,10 +24,18 @@
     <servlet-name>TimesTablesServlet</servlet-name>
     <servlet-class>kr.or.ddit.servlet.basic.TimesTablesServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>TimesTablesServlet</servlet-name>
     <url-pattern>/TimesTablesServlet</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>s</display-name>
+    <servlet-name>s</servlet-name>
+    <servlet-class>kr.or.ddit.servlet.basic.session</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>s</servlet-name>
+    <url-pattern>/s</url-pattern>
+  </servlet-mapping>
 </web-app>
