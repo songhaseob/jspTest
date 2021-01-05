@@ -27,7 +27,7 @@
 	out.write("<td>");
 	out.write( j + " * " + i + " = " + i * j);
 	out.write("</td>");
-	} 
+	 }
 	} %>
 	</table>
 </body>
