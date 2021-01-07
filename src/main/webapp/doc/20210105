@@ -30,6 +30,7 @@
  	컴파일시점
  	
 에러 페이지
+
 1. jsp 페이지별로 errorPage 속성에 에러 발생 시 이동할 jsp 파일 기술 (X)
 2. errorcode(상태코드)별 예외 페이지 설정
    web.xml 404, 500
@@ -40,9 +41,11 @@
    3. web.xml에 예외 타입별 에러 페이지 설정
    
    4. 서버 재 시작
-   5. localhost/jsp/ari.jsp로 접속해서 arithmeticException 발생하게끔 유도 하여
+   5. localhost/jsp/ari.jsp로 접속해서 arithmeticException 발생하게끔 유도하여
       설정한 에러 페이지로 이동되는지 확인
--------------------------------------------------------------------------------------------      
+      
+-------------------------------------------------------------------------------------------
+      
    탐구 과제
    
    1. webapp/error/type/runError.jsp를 생성(텍스트는 본인 편한대로)
@@ -65,8 +68,30 @@
       ==> error-page 엘레멘트 기술 순서가 영향을 미치지 않음
           예외 타입 에러페이지 설정이 에러코드 에러페이지 설정보다 우선
 -----------------------------------------------------------------------------------------------   
-   
-   
+ Cookie
+ 
+ 저장위치 - 브라우저
+ 특징 - 보안 취약 -> 클라이언트가 임의 조작가능
+ 사용방법 : client side : document.cookie
+ server side : request.getCookies(), response.addCookie(newCookie)
+ 비고 - 쿠키 이름/값
+       1. 아스키 코드,알파벳,숫자
+       2. 콤마(,), 세미콜론(;), 공백(''), $ 사용 불가
+       3. 알파벳, 숫자 이외 값이 있을 경우 base64 인코딩 처리(decode-encodeURIComponent)
+ 
+쿠키확인방법
+ 1. 개발자 도구 - application - side Cookies
+ 2. script
+    document.cookie
+ 
+ Cookie 구성
+ 쿠키 이름 = 쿠키값; 쿠키이름2=쿠키값2; 쿠키이름3=쿠키값3;
+ 
+ 특정 쿠키의 값을 확인하려면???
+ userid = brown; remember=Y; test = t;
+ 
+ 
+ 
    
    
    

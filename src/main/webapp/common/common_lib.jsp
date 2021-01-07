@@ -7,4 +7,4 @@
  <!-- Bootstrap core CSS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <!-- Bootstrap core js -->
-	<script src="<%=request.getContextPath()%>/bootstrap.js"></script>
+	<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
