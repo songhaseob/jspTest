@@ -1,4 +1,5 @@
-<%@page import="kr.or.ddit.user.model.EmpVo"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,7 +15,6 @@
 <meta name="author" content="">
 
 <title>Main</title>
-
 <style>
 	table{
 		text-align: center;
@@ -52,47 +52,43 @@
 					<div class="col-sm-8 blog-main">
 
 						<div class="blog-post">
-						<h1>직원현황</h1>
-						<br>
+							<h1>사용자현황</h1>
+							<br>
 							<table class="table table-striped">
 								<tr>
-									<th class="th">empno</th>
-									<th class="th">ename</th>
-									<th class="th">job</th>
-									<th class="th">mgr</th>
-									<th class="th">hiredate</th>
-									<th class="th">sal</th>
-									<th>comm</th>
-									<th>deptno</th>
+									<th class="th">아이디</th>
+									<th class="th">이름</th>
+									<th class="th">별명</th>
+									<th class="th">날짜</th>
 								</tr>
 								<% 
-								List<EmpVo> list = (List<EmpVo>)request.getAttribute("list");
+								List<UserVo> list = (List<UserVo>)request.getAttribute("list");
+								
+								
+								
 								for(int i = 0; i<list.size(); i++){
-										EmpVo vo = list.get(i);
+										UserVo vo = list.get(i);
 								%>
 								<tr>
-									<td><%=vo.getEMPNO() %></td>
-									<td><%=vo.getENAME() %></td>
-									<td><%=vo.getJOB() %></td>
-									<td><%=vo.getMGR() %></td>
-									<td><%=vo.getHIREDATE() %></td>
-									<td><%=vo.getSAL() %></td>
-									<td><%=vo.getCOMM() %></td>
-									<td><%=vo.getDEPTNO() %></td>
+									<td><%=vo.getUserid() %></td>
+									<td><%=vo.getUsernm() %></td>
+									<td><%=vo.getAlias() %></td>
+									<td><%=vo.getReg_dt_fmt()%></td>
 								</tr>
 							<%
 									}
 							%>
 						</table>
-					<a class="btn btn-default pull-right">사용자 등록</a>
+						<a class="btn btn-default pull-right">사용자 등록</a>
 
 						<div class="text-center">
 							<ul class="pagination">
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
+									pagination : <%=request.getAttribute("pagination") %>
+								<li><a href="<%=request.getContextPath() %>/pagingUser?page=1&pageSize=5">1</a></li>
+								<li><a href="<%=request.getContextPath() %>/pagingUser?page=2&pageSize=5">2</a></li>
+								<li><a href="<%=request.getContextPath() %>/pagingUser?page=3&pageSize=5">3</a></li>
+								<li><a href="<%=request.getContextPath() %>/pagingUser?page=4&pageSize=5">4</a></li>
+								<li><a href="<%=request.getContextPath() %>/pagingUser?page=5&pageSize=5">5</a></li>
 							</ul>
 						</div>
 						</div>

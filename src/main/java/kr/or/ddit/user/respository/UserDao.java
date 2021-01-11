@@ -48,5 +48,16 @@ public class UserDao implements UserDaoI{
 		sqlsession.close();
 		return page;
 	}
+
+	@Override
+	public int selectAlluserCnt() {
+		SqlSession sqlsession = MyBatisUtil.getSqlSession();
+		
+		int userCnt = sqlsession.selectOne("users.selectAlluserCnt");
+		
+		sqlsession.close();
+		
+		return userCnt;
+	}
 	
 }

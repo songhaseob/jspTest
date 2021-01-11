@@ -1,6 +1,8 @@
 package kr.or.ddit.user.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -24,8 +26,19 @@ public class UserService implements UserServiceI{
 	}
 
 	@Override
-	public List<UserVo> selectPagingUser(PageVo vo) {
-		return userDao.selectPagingUser(vo);
+	public Map<String, Object> selectPagingUser(PageVo vo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+		List<UserVo> userList = userDao.selectPagingUser(vo);
+		int userCnt = userDao.selectAlluserCnt();
+		
+		map.put("userList", userList);
+		map.put("userCnt", userCnt);
+		
+		return map;
 	}
+
+	
 	
 }

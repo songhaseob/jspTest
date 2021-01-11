@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -60,7 +61,7 @@ public class UserServiceTest {
 		PageVo vo = new PageVo(2,5);
 		
 		/***When***/
-		List<UserVo> List = userService.selectPagingUser(vo);
+		Map<String, Object> List = userService.selectPagingUser(vo);
 		/***Then***/
 		assertEquals(5,List.size());
 	}

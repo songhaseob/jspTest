@@ -27,4 +27,10 @@
 	where rn between (#{page}-1)*#{pageSize} +1 and #{page} * #{pageSize}
 	</select>
 	
+	<!-- 전체 사용자 수 조회 -->
+	<select id="selectAlluserCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM users
+	</select>
+	
 </mapper>

@@ -13,6 +13,7 @@ public class EmpDao implements EmpDaoI{
 
 	@Override
 	public List<EmpVo> selectAllEmp() {
+		
 		SqlSession sqlSession = MyBatisUtil.getSqlSession();
 	
 		List<EmpVo> userList = sqlSession.selectList("emp.selectAllEmp");

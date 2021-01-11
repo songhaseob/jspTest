@@ -1,3 +1,5 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -56,26 +58,36 @@
 								<tr>
 									<th class="th">아이디</th>
 									<th class="th">이름</th>
-									<th class="th">비밀번호</th>
-									<th class="th">날짜</th>
 									<th class="th">별명</th>
+									<th class="th">날짜</th>
 								</tr>
 								<% 
 								List<UserVo> list = (List<UserVo>)request.getAttribute("list");
+								
 								for(int i = 0; i<list.size(); i++){
 										UserVo vo = list.get(i);
 								%>
 								<tr>
 									<td><%=vo.getUserid() %></td>
 									<td><%=vo.getUsernm() %></td>
-									<td><%=vo.getPass() %></td>
-									<td><%=vo.getReg_dt() %></td>
 									<td><%=vo.getAlias() %></td>
+									<td><%=vo.getReg_dt_fmt()%></td>
 								</tr>
 							<%
 									}
 							%>
 						</table>
+						<a class="btn btn-default pull-right">사용자 등록</a>
+
+						<div class="text-center">
+							<ul class="pagination">
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+							</ul>
+						</div>
 						</div>
 					</div>
 					<!-- /.blog-main -->

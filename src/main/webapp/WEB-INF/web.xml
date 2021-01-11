@@ -80,4 +80,14 @@
     <servlet-name>AllEmp</servlet-name>
     <url-pattern>/allEmp</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>pagingUser</display-name>
+    <servlet-name>pagingUser</servlet-name>
+    <servlet-class>kr.or.ddit.user.controller.pagingUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pagingUser</servlet-name>
+    <url-pattern>/pagingUser</url-pattern>
+  </servlet-mapping>
 </web-app>

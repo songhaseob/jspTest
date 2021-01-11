@@ -24,6 +24,8 @@ public class AllUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
+		
 		List<UserVo> userlist = userService.selectAllUser();
 		
 		req.setAttribute("list", userlist);
