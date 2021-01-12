@@ -97,7 +97,7 @@
         <label for="user_id" class="sr-only">user_id</label>
         <input type="text" id="userid" name="userid"  class="form-control" placeholder="아이디를 입력하세요" required autofocus><br>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="pass"  class="form-control" placeholder="비밀번호를 입력하세요" required>
+        <input type="password" id="inputPassword" name="pass"  class="form-control" value="sallyPass" placeholder="비밀번호를 입력하세요" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" id="rememberme" value="remember-me"> ID 저장하기

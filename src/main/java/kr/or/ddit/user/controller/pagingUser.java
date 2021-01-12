@@ -61,8 +61,9 @@ public class pagingUser extends HttpServlet {
 		
 		Map<String, Object> map = userService.selectPagingUser(vo);
 		
-		List<UserVo> list = (List<UserVo>) map.get("list");
-		int userCnt= (int)map.get("pagination");
+		List<UserVo> list = (List<UserVo>) map.get("userList");
+		
+		int userCnt= (int)map.get("userCnt");
 		int pagination = (int)Math.ceil((double)userCnt/pageSize); 
 		
 		

@@ -83,12 +83,14 @@
 
 						<div class="text-center">
 							<ul class="pagination">
-									pagination : <%=request.getAttribute("pagination") %>
-								<li><a href="<%=request.getContextPath() %>/pagingUser?page=1&pageSize=5">1</a></li>
-								<li><a href="<%=request.getContextPath() %>/pagingUser?page=2&pageSize=5">2</a></li>
-								<li><a href="<%=request.getContextPath() %>/pagingUser?page=3&pageSize=5">3</a></li>
-								<li><a href="<%=request.getContextPath() %>/pagingUser?page=4&pageSize=5">4</a></li>
-								<li><a href="<%=request.getContextPath() %>/pagingUser?page=5&pageSize=5">5</a></li>
+								<%--
+									
+								 --%>
+								<%
+									for(int i = 1; i <= (int)request.getAttribute("pagination"); i++){
+								%>
+								<li><a href="<%=request.getContextPath() %>/pagingUser?page=<%=i %>&pageSize=5"><%=i %></a></li>
+								<%} %>
 							</ul>
 						</div>
 						</div>
