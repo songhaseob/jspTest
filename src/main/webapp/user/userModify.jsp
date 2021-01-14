@@ -22,14 +22,23 @@
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+$(function(){
+	// 주소검색 버튼이 클릭 되었을 때 다음 주소 api 팝업을 실행
+	$('#addrBtn').on("click",function(){
+		
     new daum.Postcode({
         oncomplete: function(data) {
         	
             $('#addr1').val(data.roadAddress); // 도로주소
-            $('#zipcode').val(data.zonecode);    // 우편번호
+            $('#zipcode').val(data.zonecode);    // 우편번호 
+            
+            // 사용자 편의성을 위해 상세주소 입력 input 태그로 focus 설정
+            $('#addr2').focus();
             
         }
     }).open();
+	})
+})
 </script>
 </head>
 <body>
@@ -45,41 +54,14 @@
 			</div>
 	</div>
 	</div>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">JSP/SPRING</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Help</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
-			</div>
-		</div>
-	</nav>
+	
 	<div class="container-fluid">
 		<div class="row">
 		
 			<% UserVo vo = (UserVo)request.getAttribute("uservo");%>
 			
-		
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-			
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
+				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify" method="POST">
 					<input type="hidden" name="userid" value="<%=vo.getUserid()%>">
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
@@ -87,20 +69,19 @@
 						<div class="col-sm-10">
 						<label class="control-label"><%= vo.getUserid()%></label>
 						</div>
-					</div>
-
+			</div>
 
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-								<input type="text" class="form-control" id="userId" name="userId"
+								<input type="text" class="form-control" id="usernm" name="usernm"
 						placeholder="사용자 이름" value="<%=vo.getUsernm()%>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userAlias" name="userAlias"
+							<input type="text" class="form-control" id="userAlias" name="alias"
 						placeholder="사용자 아이디" value="<%=vo.getAlias()%>">
 						</div>
 					</div>
@@ -115,7 +96,7 @@
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userdate" name="userdate"
+							<input type="text" class="form-control" id="reg_dt" name="reg_dt"
 						placeholder="등록일시" value="<%=vo.getReg_dt_fmt()%>">
 						</div>
 					</div>
@@ -130,9 +111,12 @@
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">도로주소</label>
-						<div class="col-sm-10">
+						<div class="col-sm-8">
 							<input type="text" class="form-control" id="addr1" name="addr1"
 						placeholder="주소" value="<%=vo.getAddr1()%>"readonly>
+						</div>
+						<div class="col-sm-2">
+						<button type="button" id="addrBtn" class="btn btn-default">주소 검색</button>
 						</div>
 					</div>
 					

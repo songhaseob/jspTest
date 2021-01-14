@@ -33,4 +33,20 @@
 		FROM users
 	</select>
 	
+	<update id="modifyUser" parameterType="userVo">
+		UPDATE users SET usernm = #{usernm},
+                 pass = #{pass},
+                 reg_dt = #{reg_dt},
+                 alias = #{alias},
+                 addr1 = #{addr1},
+                 addr2 = #{addr2},
+                 zipcode = #{zipcode}
+		WHERE userid = #{userid}
+	</update>
+	
+	<insert id="insertUser" parameterType="userVo">
+		INSERT INTO users (userid,usernm,pass,alias,reg_dt,addr1,addr2,zipcode)
+		VALUES( #{userid},#{usernm},#{pass},#{alias},#{reg_dt},#{addr1},#{addr2},#{zipcode})
+	</insert>
+	
 </mapper>

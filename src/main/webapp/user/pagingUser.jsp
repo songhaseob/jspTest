@@ -14,7 +14,6 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>Main</title>
 <style>
 	table{
@@ -97,8 +96,9 @@ $(function(){
 									}
 							%>
 						</table>
-						<a class="btn btn-default pull-right" href="<%=request.getContextPath()%>">사용자 등록</a>
-
+						
+						<a class="btn btn-default pull-right" href="./user/registUser.jsp">사용자 등록</a>
+						
 						<div class="text-center">
 							<% PageVo pageVo  = (PageVo)request.getAttribute("pageVo");
 							   int pagination =	(int)request.getAttribute("pagination");%>

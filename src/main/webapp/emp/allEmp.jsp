@@ -62,8 +62,8 @@
 									<th class="th">mgr</th>
 									<th class="th">hiredate</th>
 									<th class="th">sal</th>
-									<th>comm</th>
-									<th>deptno</th>
+									<th class="th">comm</th>
+									<th class="th">deptno</th>
 								</tr>
 								<% 
 								List<EmpVo> list = (List<EmpVo>)request.getAttribute("list");

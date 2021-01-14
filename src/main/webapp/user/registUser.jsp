@@ -20,10 +20,54 @@
 <%@include file="/common/common_lib.jsp"%>
 <link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+$(function(){
+	// 주소검색 버튼이 클릭 되었을 때 다음 주소 api 팝업을 실행
+	$('#addrBtn').on("click",function(){
+		
+    new daum.Postcode({
+        oncomplete: function(data) {
+        	
+            $('#addr1').val(data.roadAddress); // 도로주소
+            $('#zipcode').val(data.zonecode);    // 우편번호 
+            
+            // 사용자 편의성을 위해 상세주소 입력 input 태그로 focus 설정
+            $('#addr2').focus();
+            
+        }
+    }).open();
+	})
+	
+	$('#samebtn').on("click",function(){
+		var userid = $('#userid').val();
+		$.ajax({
+			url : "<%=request.getContextPath()%>/registUser",
+			type : "get",
+			data : {
+				"userid" : userid 
+			},
+			success : function(res) {
+				
+				if(res.cnt == 0 ){
+					alert("사용가능한 아이디입니다.");
+				}else{
+					alert("중복된 아이디입니다.")
+				}
+			},
+			error : function(xhr) {
+				alert("상태 : " + xhr.status)
+			},
+			dataType : "json"
+		})
+	})
+})
+
+</script>
 </head>
 <body>
 <body>
-<%@include file="/common/header.jsp"%>
+	<%@include file="/common/header.jsp"%>
 	
 	<div class="container-fluid">
 		<div class="row">
@@ -34,100 +78,78 @@
 			</div>
 	</div>
 	</div>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">JSP/SPRING</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Help</a></li>
-				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
-				</form>
-			</div>
-		</div>
-	</nav>
+	
 	<div class="container-fluid">
 		<div class="row">
 		
 			<% UserVo vo = (UserVo)request.getAttribute("uservo");%>
 			
-		
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-			
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
-					<input type="hidden" name="userid" value="<%=vo.getUserid()%>">
+				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/registUser" method="POST">
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
-						<div class="col-sm-10">
-								<label class="control-label"><%= vo.getUserid()%></label>
+						<div class="col-sm-8">
+								<input type="text" class="form-control" id="userid" name="userid"
+						placeholder="사용자 아이디" >
 						</div>
+						<div class="col-sm-2">
+						<button type="button" id="samebtn" class="btn btn-default">중복 검사</button>
+						</div>
+						
 					</div>
-
-
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-								<label class="control-label"><%= vo.getUsernm()%></label>
+								<input type="text" class="form-control" id="usernm" name="usernm"
+						placeholder="사용자 이름" >
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getAlias()%></label>
+							<input type="text" class="form-control" id="userAlias" name="alias"
+						placeholder="사용자 아이디" >
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getPass()%></label>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="pass" class="col-sm-2 control-label">등록일시</label>
-						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getReg_dt_fmt()%></label>
+							<input type="password" class="form-control" id="pass" name="pass"
+						placeholder="사용자비밀번호" >
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getZipcode()%></label>
+							<input type="text" class="form-control" id="zipcode" name="zipcode"
+						placeholder="우편번호"  readonly>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">도로주소</label>
-						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getAddr1()%></label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="addr1" name="addr1"
+						placeholder="주소" readonly>
+						</div>
+						<div class="col-sm-2">
+						<button type="button" id="addrBtn" class="btn btn-default">주소 검색</button>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getAddr2()%></label>
+							<input type="text" class="form-control" id="addr2" name="addr2"
+						placeholder="상세주소">
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 수정</button>
+							<button type="submit" class="btn btn-default">사용자등록</button>
 						</div>
 					</div>
 				</form>
