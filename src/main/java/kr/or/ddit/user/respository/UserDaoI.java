@@ -23,5 +23,9 @@ public interface UserDaoI {
 	// int modifyUser(String userid, String usernm, String alias); 변경이 생길 수 있을때는 콜했던 곳을 다 찾아가서 찾아야 한다
 	int modifyUser(UserVo userVo);
 	
+	// 사용자 정보 등록
 	int insertUser(UserVo userVo);
+	
+	// 사용자 정보 삭제
+	int deleteUser(String userid);
 }

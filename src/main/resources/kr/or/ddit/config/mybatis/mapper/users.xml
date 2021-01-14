@@ -49,4 +49,10 @@
 		VALUES( #{userid},#{usernm},#{pass},#{alias},#{reg_dt},#{addr1},#{addr2},#{zipcode})
 	</insert>
 	
+	<!-- 사용자 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE users WHERE userid = #{userid}
+	</delete>
+	
+	
 </mapper>

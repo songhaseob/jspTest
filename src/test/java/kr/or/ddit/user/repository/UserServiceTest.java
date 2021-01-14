@@ -4,9 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.common.model.PageVo;
@@ -18,11 +21,28 @@ import kr.or.ddit.user.service.UserServiceI;
 
 public class UserServiceTest {
 	
+	private UserServiceI userService;
+	
+	@Before
+	public void setup() {
+		userService = new UserService();
+		
+		// 테스트에서 사용 할 신규 사용자 추가
+		UserVo userVo = new UserVo("testUser","테스트사용자","testUserPass",new Date(),"대덕","대전 중구 중앙로 76","4층","34940");
+		
+		userService.insertUser(userVo);
+	}
+	
+	@After
+	public void tearDown() {
+		userService.deleteUser("testUser");
+	}
+	
+	
 	// 전체 사용자 조회 테스트
 	@Test
 	public void selectAllUserTest() {
 		/***Given***/
-		UserServiceI userService = new UserService();
 		/***When***/
 		List<UserVo> userList = userService.selectAllUser();
 		/***Then***/
@@ -33,7 +53,6 @@ public class UserServiceTest {
 	@Test
 	public void selectUserTest() {
 		/***Given***/
-		UserServiceI userService = new UserService();
 		String userid="brown";
 		/***When***/
 		UserVo user = userService.selectUser(userid);
@@ -45,7 +64,6 @@ public class UserServiceTest {
 
 	@Test
 	public void selectUserNotExsistTest() {
-		UserServiceI userService = new UserService();
 		String userid="brownNotexists";
 		/***When***/
 		UserVo user = userService.selectUser(userid);
@@ -57,7 +75,6 @@ public class UserServiceTest {
 	@Test
 	public void selectPagingUser() {
 		/***Given***/
-		UserServiceI userService = new UserService();
 		PageVo vo = new PageVo(2,5);
 		
 		/***When***/
@@ -68,5 +85,35 @@ public class UserServiceTest {
 		assertEquals(5,userList.size());
 		assertEquals(16, userCnt);
 	}
+	
+	@Test
+	public void modifyUserServiceTest() {
+		/***Given***/
+		// userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode
+		UserVo userVo = new UserVo("ddit","대덕인재","dditpass",new Date(),
+				"개발원 m","대전시 중구 중앙로 76","4층 대덕인재개발원","34940");
+		
+		/***When***/
+		int updateCnt = userService.modifyUser(userVo);
+		
+		/***Then***/
+		assertEquals(1, updateCnt);
+		
+		
+	}
+	
+	// 삭제테스트
+		@Test
+		public void deleteUserTest() {
+			/***Given***/
+			// 해당 테스트가 실행될 때는 testUser라는 사용자가 before 메소드에 의해 등록이 된 상태
+			String userid ="testUser";
+			/***When***/
+			int deleteCnt = userService.deleteUser(userid);
+			/***Then***/
+			assertEquals(1, deleteCnt);
+			
+			
+		}
 
 }

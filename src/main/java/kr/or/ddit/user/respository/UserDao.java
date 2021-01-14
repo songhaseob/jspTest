@@ -91,5 +91,20 @@ public class UserDao implements UserDaoI{
 		
 		return insertCnt;
 	}
+
+	@Override
+	public int deleteUser(String userid) {
+		SqlSession sqlsession = MyBatisUtil.getSqlSession();
+		
+		int deleteCnt = sqlsession.delete("users.deleteUser",userid);
+		
+		if(deleteCnt ==1) {
+			sqlsession.commit(); //커밋을 실행해서 데이터 베이스에 반영이 된다
+			}else {
+				sqlsession.rollback();
+			}
+		
+		return deleteCnt;
+	}
 	
 }

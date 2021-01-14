@@ -130,4 +130,14 @@
     <servlet-name>registUser</servlet-name>
     <url-pattern>/registUser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserDelete</display-name>
+    <servlet-name>UserDelete</servlet-name>
+    <servlet-class>kr.or.ddit.user.controller.UserDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserDelete</servlet-name>
+    <url-pattern>/deleteUser</url-pattern>
+  </servlet-mapping>
 </web-app>

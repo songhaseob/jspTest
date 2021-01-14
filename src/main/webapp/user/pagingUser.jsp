@@ -97,7 +97,7 @@ $(function(){
 							%>
 						</table>
 						
-						<a class="btn btn-default pull-right" href="./user/registUser.jsp">사용자 등록</a>
+						<a class="btn btn-success" href="./user/registUser.jsp">사용자 등록</a>
 						
 						<div class="text-center">
 							<% PageVo pageVo  = (PageVo)request.getAttribute("pageVo");
