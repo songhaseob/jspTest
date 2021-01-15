@@ -86,6 +86,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 						<body onload="printClock()">
 						<div style="width:600px; height:250px; line-height:250px; color:#666;font-size:100px; text-align:center;" id="clock">
 						<div onload="printClock()">
+						<p><%=d %></p>
 						</div>
 						</div>
 							</p>

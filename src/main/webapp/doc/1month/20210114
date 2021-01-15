@@ -15,10 +15,16 @@ db에서 삭제
 3. service, dao 삭제로 생성
 
 상향식(bottom up)
-vo => sql => dao => daoTest => service => serviceTest => controller => jsp
+sql => dao => daoTest => service => serviceTest => controller => jsp
 
 사용자 상세 조회 페이지 사용자 이미지 추가
 사용자의 이미지는 webapp/profile에 저장
 파일이름의 규칙 => 사용자ID.png
 	brown ==> brown.png
 	sally ==> sally.png
+	
+jdbc connection pooling 사용 목적 이해
+connection pooling - application 초기화 시 정해진 사이즈로 connection pool 생성
+servlet/jsp -> connection pool <- 반납
+
+loadonstartup 서버가 켜질때 init메소드를 콜
