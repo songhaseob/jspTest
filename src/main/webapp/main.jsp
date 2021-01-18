@@ -52,8 +52,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 </script>
 <!-- Bootstrap core CSS -->
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 </head>
 
 <body>

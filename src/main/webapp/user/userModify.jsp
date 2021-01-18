@@ -18,8 +18,8 @@
 
 <!-- Bootstrap core CSS -->
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 $(function(){
@@ -61,13 +61,13 @@ $(function(){
 			<% UserVo vo = (UserVo)request.getAttribute("uservo");%>
 			
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify" method="POST">
-					<input type="hidden" name="userid" value="<%=vo.getUserid()%>">
+				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath} /userModify" method="POST">
+					<input type="hidden" name="userid" value="${param.userid }">
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						
 						<div class="col-sm-10">
-						<label class="control-label"><%= vo.getUserid()%></label>
+						<label class="control-label">${param.userid }</label>
 						</div>
 			</div>
 
@@ -75,21 +75,21 @@ $(function(){
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 								<input type="text" class="form-control" id="usernm" name="usernm"
-						placeholder="사용자 이름" value="<%=vo.getUsernm()%>">
+						placeholder="사용자 이름" value="${param.usernm }">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userAlias" name="alias"
-						placeholder="사용자 아이디" value="<%=vo.getAlias()%>">
+						placeholder="사용자 아이디" value="${param.alias }">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="pass" name="pass"
-						placeholder="사용자비밀번호" value="<%=vo.getPass()%>">
+						placeholder="사용자비밀번호" value="${param.pass }">
 						</div>
 					</div>
 					
@@ -97,7 +97,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="reg_dt" name="reg_dt"
-						placeholder="등록일시" value="<%=vo.getReg_dt_fmt()%>">
+						placeholder="등록일시" value="${param.reg_dt }">
 						</div>
 					</div>
 					
@@ -105,7 +105,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="zipcode" name="zipcode"
-						placeholder="우편번호" value="<%=vo.getZipcode()%>" readonly>
+						placeholder="우편번호" value="${param.zipcode }" readonly>
 						</div>
 					</div>
 					
@@ -113,7 +113,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">도로주소</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="addr1" name="addr1"
-						placeholder="주소" value="<%=vo.getAddr1()%>"readonly>
+						placeholder="주소" value="${param.addr1 }"readonly>
 						</div>
 						<div class="col-sm-2">
 						<button type="button" id="addrBtn" class="btn btn-default">주소 검색</button>
@@ -124,7 +124,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="addr2" name="addr2"
-						placeholder="상세주소" value="<%=vo.getAddr2()%>">
+						placeholder="상세주소" value="${param.addr2 }">
 						</div>
 					</div>
 

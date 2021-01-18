@@ -4,6 +4,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +27,8 @@
 </style>
 <!-- Bootstrap core CSS -->
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -63,20 +65,17 @@
 								</tr>
 								<% 
 								List<UserVo> list = (List<UserVo>)request.getAttribute("list");
-								
-								for(int i = 0; i<list.size(); i++){
-										UserVo vo = list.get(i);
 								%>
+								<c:forEach items="${list}" var="user">
 								<tr>
-									<td><%=vo.getUserid() %></td>
-									<td><%=vo.getUsernm() %></td>
-									<td><%=vo.getAlias() %></td>
-									<td><%=vo.getReg_dt_fmt()%></td>
+									<td>${user.userid}</td>
+									<td>${user.usernm}</td>
+									<td>${user.alias}</td>
+									<td>${user.getReg_dt_fmt()}</td>
 								</tr>
-							<%
-									}
-							%>
+								</c:forEach>						
 						</table>
+						
 						<a class="btn btn-default pull-right">사용자 등록</a>
 
 						<div class="text-center">

@@ -25,19 +25,19 @@
 
 <!-- Bootstrap core CSS -->
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 <script>
 	$(function(){
 		$('#modifyBtn').on("click",function(){
 			$('#frm').attr("method","get");
-			$('#frm').attr("action","<%=request.getContextPath()%>/userModify");
+			$('#frm').attr("action","${pageContext.request.contextPath}/userModify");
 			$('#frm').submit();
 			
 		})
 		$('#deleteBtn').on("click",function(){
 			$('#frm').attr("method","post");
-			$('#frm').attr("action","<%=request.getContextPath()%>/deleteUser");
+			$('#frm').attr("action","${pageContext.request.contextPath}/deleteUser");
 			$('#frm').submit();
 		})
 	})
@@ -96,7 +96,7 @@
 					<div class="form-group">
 						<label id="img" for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-								<img src="<%=request.getContextPath() %>/profile/<%= vo.getUserid()%>.png">
+								<img src="${pageContext.request.contextPath}/profile/<%= vo.getUserid()%>.png">
 								
 						</div>
 					</div>
@@ -158,8 +158,8 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<%-- 사용자 수정 : method : get action= <%=request.getContextPath()%>/userModify
-								 사용자 삭제 : method : post action= <%=request.getContextPath()%>/deleteUse 
+							<%-- 사용자 수정 : method : get action= ${pageContext.request.contextPath}/userModify
+								 사용자 삭제 : method : post action= ${pageContext.request.contextPath}/deleteUse 
 								 파라미터는 둘다 userid 하나만 있으면 가능
 							--%>
 							<button type="button" id="modifyBtn" class="btn btn-primary">사용자 수정</button>
