@@ -1,0 +1,6 @@
+2021.01.18
+
+el,jstl ==> 표현식, 스크립틀릿을 걷어 내기 위함
+        ==> JSP파일을 최대한 태그 처럼 보이게 하기 위함
+            (자바 코드를 걷어낸다)
+el에서 제공하는 것은 pageContext밖에 없음 page.Context.getRequest()

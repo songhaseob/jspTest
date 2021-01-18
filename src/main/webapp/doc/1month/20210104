@@ -51,21 +51,21 @@ request - 클라이언트의 요청 정보가 유지되는 동안 공유되는 �
 session - 클라이언트의 정보가 유지되는 동안 공유되는 영역 / jsp -> session / servlet-> request.getSession()
 application - 웹 어플리케이션 내에서 공유되는 객체의 영역 / jsp -> application / servlet-> getServletContext()
 
-속성 : 요청을 처리하는 과정에서 sevlet/jsp 사이에서 공유하는 정보
+속성 : 요청을 처리하는 과정에서 servlet/jsp 사이에서 공유하는 정보
 scope : 속성을 담을 수 있는 영역, 객체
 
 scope 객체
 page (pageContext)          : 해당 jsp 페이지 내에서만 유효한 공간 (java의 block 안에 선언된 지역변수)
 request(HttpServletRequest) : 요청이 처리 될 때까지만 유효한 공간(java의 지역변수)
 session (HttpSession)       : session이 유효한 동안 유지되는 공간 (java의 인스턴스 객체)
-application (SevletContext) : 웹 어플리케이션에서 하나만 유지되는 공간 (java의 static 변수)
+application (ServletContext) : 웹 어플리케이션에서 하나만 유지되는 공간 (java의 static 변수)
 
 -------------------------------------------------------------------------------------------------------------------------------
 
 scope 객체 실습(집가서 한번 더 해보기!)
 
 웹 브라우저로 다음 주소에 접속 : localhost/scope (GET방식)
-해당 요청을 처리해줄 servlet 생성(kr.or.ddit.sevlet.scope.Scope.java)
+해당 요청을 처리해줄 servlet 생성(kr.or.ddit.servlet.scope.Scope.java)
 GET 요청에 대해서는 화면을 webapp/jsp/scope.jsp로 응답 생성 위임
 
 scope.jsp에는 하나의 input 태그와 (name-scope) submit 버튼을 생성

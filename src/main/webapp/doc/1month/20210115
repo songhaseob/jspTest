@@ -44,7 +44,52 @@ ${expression} : 기본 객체 탐색
 - 영역명을 사용하지 않은 경우
 기본객체 - pageScope, requestScope,sessionScope,applicationScope
 page,request,sessin,application 영역을 차례대로 검색
+
+JSTL 사용법
+
+JSTL 태그 종류
+라이브러리     하위 기능    
+Core         변수지원 흐름제어 URL재 처리 
+
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
