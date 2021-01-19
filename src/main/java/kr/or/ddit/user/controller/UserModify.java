@@ -39,7 +39,7 @@ public class UserModify extends HttpServlet {
 	// 사용자 정보 수정 요청 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//파라미터를 읽기 전에 실행
-		request.setCharacterEncoding("UTF-8");
+	
 		
 		String userid = request.getParameter("userid");
 		String usernm = request.getParameter("usernm");
