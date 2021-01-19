@@ -42,7 +42,6 @@ public class RequestCounterFilter implements Filter{
 		// requestConuntMap에 uri에 해당 키가 있을 수도 있고 없을 수도 있음
 		
 		//
-		request.setCharacterEncoding("UTF-8");
 		// 최조 요청인 경우
 		if(requestCountMap.get(uri) == null) {
 			requestCountMap.put(uri, 1);

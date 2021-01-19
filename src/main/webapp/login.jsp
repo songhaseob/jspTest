@@ -92,6 +92,7 @@
   <body>
 
     <div class="container">
+    	UNT_CD : ${param.UNT_CD } / <%=request.getParameter("UNT_CD") %>
       <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/loginController" method="POST">
         <h2 class="form-signin-heading">로그인 페이지</h2>
         <label for="user_id" class="sr-only">user_id</label>
