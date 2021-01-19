@@ -86,7 +86,7 @@
 	<h3>url 작성</h3>
 	<a href="<c:url value="/registUser.jsp"/>">사용자등록</a><br>
 	
-	<a href="${pageContext.request.contextPath }/registUser.jsp">사용자등록</a><br>
+	<a href="${cp }/registUser.jsp">사용자등록</a><br>
 	<a href="${cp }/registUser.jsp">사용자등록</a><br>
 	
 	var 속성을 적용하지 않은 경우 : 태그를 작성한 곳에 출력 <c:url value="./registUser.jsp" var="url"/><br>

@@ -22,7 +22,7 @@
 <body>
 	<br>
 	param : [${param.Lang}]
-	<form action="${pageContext.request.contextPath}/jstl/selectLang.jsp">
+	<form action="${cp}/jstl/selectLang.jsp">
 	<select name="Lang">
 		<option value="ko">한국어</option>
 		<option value="en">English</option>

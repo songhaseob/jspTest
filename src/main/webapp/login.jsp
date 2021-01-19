@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+    <link href="${cp}/css/signin.css" rel="stylesheet">
     
     <script>
     	//html 문서 로딩이 완료 되고 나서 실행 되는 코드
@@ -92,8 +92,8 @@
   <body>
 
     <div class="container">
-    	UNT_CD : ${param.UNT_CD } / <%=request.getParameter("UNT_CD") %>
-      <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/loginController" method="POST">
+    	cp : ${cp }&nbsp; 또는 &nbsp; <%=application.getAttribute("cp") %>
+      <form class="form-signin" id="frm" action="${cp}/loginController" method="POST">
         <h2 class="form-signin-heading">로그인 페이지</h2>
         <label for="user_id" class="sr-only">user_id</label>
         <input type="text" id="userid" name="userid"  class="form-control" placeholder="아이디를 입력하세요" required autofocus><br>

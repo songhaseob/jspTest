@@ -26,19 +26,19 @@
 
 <!-- Bootstrap core CSS -->
 <%@include file="/common/common_lib.jsp"%>
-<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/dashboard.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 <script>
 	$(function(){
 		$('#modifyBtn').on("click",function(){
 			$('#frm').attr("method","get");
-			$('#frm').attr("action","${pageContext.request.contextPath}/userModify");
+			$('#frm').attr("action","${cp}/userModify");
 			$('#frm').submit();
 			
 		})
 		$('#deleteBtn').on("click",function(){
 			$('#frm').attr("method","post");
-			$('#frm').attr("action","${pageContext.request.contextPath}/deleteUser");
+			$('#frm').attr("action","${cp}/deleteUser");
 			$('#frm').submit();
 		})
 	})
@@ -97,7 +97,7 @@
 					<div class="form-group">
 						<label id="img" for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-								<img src="${pageContext.request.contextPath}/profile/${param.userid }.png">
+								<img src="${cp}/profile/${param.userid }.png">
 								
 						</div>
 					</div>
@@ -159,8 +159,8 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<%-- 사용자 수정 : method : get action= ${pageContext.request.contextPath}/userModify
-								 사용자 삭제 : method : post action= ${pageContext.request.contextPath}/deleteUse 
+							<%-- 사용자 수정 : method : get action= ${cp}/userModify
+								 사용자 삭제 : method : post action= ${cp}/deleteUse 
 								 파라미터는 둘다 userid 하나만 있으면 가능
 							--%>
 							<button type="button" id="modifyBtn" class="btn btn-primary">사용자 수정</button>
