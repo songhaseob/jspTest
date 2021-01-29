@@ -26,6 +26,7 @@ public class SessionCheckFilter implements Filter {
 		String uri =  req.getRequestURI();
 		
 		// session 체크가 필요 없는 주소 : login.jsp, loginController
+		// localhost/css/main.css
 		if(uri.endsWith("login.jsp") || 
 		   uri.endsWith("loginController") || 
 		   uri.contains("/css/") || 

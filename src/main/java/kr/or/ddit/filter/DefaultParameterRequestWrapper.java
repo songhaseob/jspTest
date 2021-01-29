@@ -31,7 +31,6 @@ public class DefaultParameterRequestWrapper extends HttpServletRequestWrapper{
 			return values[0];
 		}
 		
-		
 	}
 	@Override
 	public Map<String, String[]> getParameterMap() {

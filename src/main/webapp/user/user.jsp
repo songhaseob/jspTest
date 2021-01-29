@@ -92,12 +92,15 @@
 
 			
 				<form class="form-horizontal" id="frm" role="form">
-					<input type="hidden"  name="userid" value="${param.userid }">
+					<input type="hidden"  name="userid" value="${uservo.userid }">
 					
 					<div class="form-group">
 						<label id="img" for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-								<img src="${cp}/profile/${param.userid }.png">
+								<%-- <img src="${cp}/profile/${uservo.userid }.png"> --%>
+								<a href="/profileDownload?userid=${uservo.userid }">
+									<img src="${cp}/profile?userid=${uservo.userid }">
+								</a>
 								
 						</div>
 					</div>
@@ -105,7 +108,7 @@
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-								<label class="control-label">${param.userid }</label>
+								<label class="control-label">${uservo.userid }</label>
 						</div>
 					</div>
 
@@ -113,47 +116,47 @@
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-								<label class="control-label">${param.usernm }</label>
+								<label class="control-label">${uservo.usernm }</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-							<label class="control-label">${param.alias }</label>
+							<label class="control-label">${uservo.alias }</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<label class="control-label">${param.pass }</label>
+							<label class="control-label">${uservo.pass }</label>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
-							<label class="control-label"><fmt:formatDate value="${user.reg_dt }" pattern="yyyy.MM.dd"/></label>
+							<label class="control-label"><fmt:formatDate value="${uservo.reg_dt }" pattern="yyyy.MM.dd"/></label>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
-							<label class="control-label">${param.zipcode }</label>
+							<label class="control-label">${uservo.zipcode }</label>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">도로주소</label>
 						<div class="col-sm-10">
-							<label class="control-label">${param.addr1 }</label>
+							<label class="control-label">${uservo.addr1 }</label>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
-							<label class="control-label">${param.addr2 }</label>
+							<label class="control-label">${uservo.addr2 }</label>
 						</div>
 					</div>
 					

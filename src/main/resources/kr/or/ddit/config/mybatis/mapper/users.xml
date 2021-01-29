@@ -40,13 +40,15 @@
                  alias = #{alias},
                  addr1 = #{addr1},
                  addr2 = #{addr2},
-                 zipcode = #{zipcode}
+                 zipcode = #{zipcode},
+                 filename = #{filename},
+                 realfilename = #{realfilename}
 		WHERE userid = #{userid}
 	</update>
 	
 	<insert id="insertUser" parameterType="userVo">
-		INSERT INTO users (userid,usernm,pass,alias,reg_dt,addr1,addr2,zipcode)
-		VALUES( #{userid},#{usernm},#{pass},#{alias},#{reg_dt},#{addr1},#{addr2},#{zipcode})
+		INSERT INTO users (userid,usernm,pass,alias,reg_dt,addr1,addr2,zipcode,filename, realfilename)
+		VALUES( #{userid},#{usernm},#{pass},#{alias},#{reg_dt},#{addr1},#{addr2},#{zipcode},#{filename},#{realfilename})
 	</insert>
 	
 	<!-- 사용자 삭제 -->

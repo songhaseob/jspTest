@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +19,9 @@ import org.slf4j.LoggerFactory;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceI;
+import kr.or.ddit.utill.FileUtil;
 
-
+@MultipartConfig
 public class UserModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,25 +43,32 @@ public class UserModify extends HttpServlet {
 	// 사용자 정보 수정 요청 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//파라미터를 읽기 전에 실행
-	
+		request.setCharacterEncoding("UTF-8");
 		
 		String userid = request.getParameter("userid");
 		String usernm = request.getParameter("usernm");
 		String pass = request.getParameter("pass");
 		String alias = request.getParameter("alias");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-		Date reg_dt = null;
-		try {
-			reg_dt = sdf.parse(request.getParameter("reg_dt"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
 		String zipcode = request.getParameter("zipcode");
 		String addr1 = request.getParameter("addr1");
 		String addr2 = request.getParameter("addr2");
 		
-		UserVo uservo = new UserVo(userid,usernm,pass,reg_dt,alias,addr1,addr2,zipcode);
+		Part profile = request.getPart("profile");
+		
+		String filename="";
+		String realfilename ="";
+		
+		if(profile.getSize() > 0) {
+			 filename = FileUtil.getFileName(profile.getHeader("Content-Disposition"));
+			 String fileExtension = FileUtil.getFileExtension(filename);
+			 realfilename = UUID.randomUUID().toString()+fileExtension;
+			
+			profile.write("d:\\upload\\" + realfilename);
+			
+		}
+		
+		
+		UserVo uservo = new UserVo(userid,usernm,pass,new Date(),alias,addr1,addr2,zipcode,filename,realfilename);
 		
 		int updateCnt = userService.modifyUser(uservo);
 		

@@ -85,12 +85,13 @@ $(function(){
 			<% UserVo vo = (UserVo)request.getAttribute("uservo");%>
 			
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" role="form" action="${cp}/registUser" method="POST">
+				<form class="form-horizontal" role="form" action="${cp}/registUser" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-8">
 								<input type="text" class="form-control" id="userid" name="userid"
-						placeholder="사용자 아이디" >
+						placeholder="사용자 아이디" ><br>
+						<input type="file" class="form-control" name="profile"><br>
 						</div>
 						<div class="col-sm-2">
 						<button type="button" id="samebtn" class="btn btn-default">중복 검사</button>

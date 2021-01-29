@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,13 +62,23 @@ $(function(){
 			<% UserVo vo = (UserVo)request.getAttribute("uservo");%>
 			
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" role="form" action="${cp} /userModify" method="POST">
-					<input type="hidden" name="userid" value="${param.userid }">
+				<form class="form-horizontal" role="form" action="${cp} /userModify" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="userid" value="${uservo.userid }">
+					
+					<div class="form-group">
+						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+						
+						<div class="col-sm-10">
+						<img src="${cp }/profile/${uservo.userid}.png"><br>
+						<input type="file" class="form-control" id="profile" name="profile">
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						
 						<div class="col-sm-10">
-						<label class="control-label">${param.userid }</label>
+						<label class="control-label">${uservo.userid }</label>
 						</div>
 			</div>
 
@@ -75,21 +86,21 @@ $(function(){
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 								<input type="text" class="form-control" id="usernm" name="usernm"
-						placeholder="사용자 이름" value="${param.usernm }">
+						placeholder="사용자 이름" value="${uservo.usernm }">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userAlias" name="alias"
-						placeholder="사용자 아이디" value="${param.alias }">
+						placeholder="사용자 아이디" value="${uservo.alias }">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control" id="pass" name="pass"
-						placeholder="사용자비밀번호" value="${param.pass }">
+						placeholder="사용자비밀번호" value="${uservo.pass }">
 						</div>
 					</div>
 					
@@ -97,7 +108,8 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="reg_dt" name="reg_dt"
-						placeholder="등록일시" value="${param.reg_dt }">
+						placeholder="등록일시" value="<fmt:formatDate value="${uservo.reg_dt }" pattern="yyyy.MM.dd"/>">
+						
 						</div>
 					</div>
 					
@@ -105,7 +117,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="zipcode" name="zipcode"
-						placeholder="우편번호" value="${param.zipcode }" readonly>
+						placeholder="우편번호" value="${uservo.zipcode }" readonly>
 						</div>
 					</div>
 					
@@ -113,7 +125,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">도로주소</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="addr1" name="addr1"
-						placeholder="주소" value="${param.addr1 }"readonly>
+						placeholder="주소" value="${uservo.addr1 }"readonly>
 						</div>
 						<div class="col-sm-2">
 						<button type="button" id="addrBtn" class="btn btn-default">주소 검색</button>
@@ -124,7 +136,7 @@ $(function(){
 						<label for="pass" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="addr2" name="addr2"
-						placeholder="상세주소" value="${param.addr2 }">
+						placeholder="상세주소" value="${uservo.addr2 }">
 						</div>
 					</div>
 
